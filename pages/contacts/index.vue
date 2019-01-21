@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-form v-model="valid">
+    <v-form>
       <v-container>
         <v-layout>
           <v-flex
@@ -9,7 +9,6 @@
           >
             <v-text-field
               v-model="id"
-              :rules="nameRules"
               :counter="5"
               label="ID"
               maxlength="5"
@@ -22,7 +21,6 @@
           >
             <v-text-field
               v-model="register_date"
-              :rules="nameRules"
               :counter="10"
               label="登録日時"
               maxlength="10"
@@ -35,7 +33,6 @@
           >
             <v-text-field
               v-model="status"
-              :rules="nameRules"
               label="ステータス"
             />
           </v-flex>
@@ -186,6 +183,9 @@
 export default {
   data() {
     return {
+      id: '',
+      register_date: '',
+      status: '',
       dialog: false,
       headers: [
         { text: 'ID', value: 'id' },
