@@ -33,6 +33,7 @@
           >
             <v-text-field
               v-model="status"
+              :counter="10"
               label="ステータス"
             />
           </v-flex>
@@ -43,10 +44,12 @@
       slot="activator"
       color="blue lighten-2"
       dark
+      @click="search"
     >
       検索
     </v-btn>
     <v-data-table
+      :loading="loading"
       :headers="headers"
       :items="orders"
       class="elevation-1"
@@ -183,6 +186,7 @@
 export default {
   data() {
     return {
+      loading: false,
       id: '',
       register_date: '',
       status: '',
@@ -193,42 +197,49 @@ export default {
         { text: 'ステータス', value: 'status' },
         { text: 'アクション', value: 'action' }
       ],
-      orders: [
-        {
-          id: 1,
-          register_date: '2018/12/30',
-          status: '処理中'
-        },
-        {
-          id: 2,
-          register_date: '2018/12/30',
-          status: '処理中'
-        },
-        {
-          id: 3,
-          register_date: '2018/12/30',
-          status: '処理中'
-        },
-        {
-          id: 4,
-          register_date: '2018/12/30',
-          status: '処理中'
-        },
-        {
-          id: 5,
-          register_date: '2018/12/30',
-          status: '処理中'
-        },
-        {
-          id: 6,
-          register_date: '2018/12/30',
-          status: '処理中'
-        }
-      ]
+      orders: []
     }
   },
   layout: 'contacts',
   methods: {
+    search() {
+      this.loading = true
+      setTimeout(() => {
+        this.orders = [
+          {
+            id: 1,
+            register_date: '2018/12/30',
+            status: '処理中'
+          },
+          {
+            id: 2,
+            register_date: '2018/12/30',
+            status: '処理中'
+          },
+          {
+            id: 3,
+            register_date: '2018/12/30',
+            status: '処理中'
+          },
+          {
+            id: 4,
+            register_date: '2018/12/30',
+            status: '処理中'
+          },
+          {
+            id: 5,
+            register_date: '2018/12/30',
+            status: '処理中'
+          },
+          {
+            id: 6,
+            register_date: '2018/12/30',
+            status: '処理中'
+          }
+        ]
+        this.loading = false
+      }, 3000)
+    },
     showItem(id) {
       alert(`show : ${id}`)
     },
