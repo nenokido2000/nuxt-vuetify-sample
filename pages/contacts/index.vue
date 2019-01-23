@@ -104,7 +104,7 @@
         <v-card-title
           class="grey lighten-4 py-4 title"
         >
-          Create contact
+          新規登録
         </v-card-title>
         <v-container
           grid-list-sm
@@ -164,17 +164,12 @@
           </v-layout>
         </v-container>
         <v-card-actions>
-          <v-btn
-            flat
-            color="primary">More</v-btn>
           <v-spacer/>
           <v-btn
-            flat
-            color="primary"
-            @click="dialog = false">Cancel</v-btn>
+            @click="dialog = false">キャンセル</v-btn>
           <v-btn
-            flat
-            @click="dialog = false">Save</v-btn>
+            color="primary"
+            @click="dialog = false">登録する</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
