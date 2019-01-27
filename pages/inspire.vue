@@ -13,6 +13,14 @@
           </small>
         </footer>
       </blockquote>
+      <nuxt-link to="/">top</nuxt-link>
+      <br>
+      <nuxt-link to="/contacts">contacts</nuxt-link>
     </v-flex>
   </v-layout>
 </template>
+<script>
+export default {
+  layout: 'contacts'
+}
+</script>
