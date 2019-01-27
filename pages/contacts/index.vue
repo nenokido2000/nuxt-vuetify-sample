@@ -81,7 +81,7 @@
               class="mr-2"
               @click="showItem(props.item.id)"
             >
-              more_horiz
+              list
             </v-icon>
             <span>詳細を見る</span>
           </v-tooltip>
@@ -120,14 +120,14 @@
         color="pink"
         dark
         fixed
-        @click.stop="dialog = !dialog"
+        @click.stop="newDialog = !newDialog"
       >
         <v-icon>add</v-icon>
       </v-btn>
       <span>登録する</span>
     </v-tooltip>
     <v-dialog
-      v-model="dialog"
+      v-model="newDialog"
       width="800px">
       <v-card>
         <v-card-title
@@ -195,11 +195,57 @@
         <v-card-actions>
           <v-spacer/>
           <v-btn
-            @click="dialog = false">キャンセル</v-btn>
+            @click="newDialog = false">キャンセル</v-btn>
           <v-btn
             color="primary"
-            @click="dialog = false">登録する</v-btn>
+            @click="newDialog = false">登録する</v-btn>
         </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <v-dialog
+      v-model="showDialog"
+      fullscreen
+      hide-overlay
+    >
+      <v-card>
+        <v-toolbar
+          dark
+          color="primary">
+          <v-icon>list</v-icon>
+          <v-toolbar-title>詳細情報</v-toolbar-title>
+          <v-spacer/>
+          <v-btn
+            icon
+            dark
+            @click="showDialog = false">
+            <v-icon>close</v-icon>
+          </v-btn>
+        </v-toolbar>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="showedItem.id"
+                  label="ID"
+                />
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="showedItem.register_date"
+                  label="登録日時"
+                />
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field
+                  v-model="showedItem.status"
+                  label="ステータス"
+                />
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
       </v-card>
     </v-dialog>
   </div>
@@ -214,14 +260,20 @@ export default {
       id: '',
       register_date: '',
       status: '',
-      dialog: false,
+      newDialog: false,
+      showDialog: false,
       headers: [
         { text: 'ID', value: 'id' },
         { text: '登録日時', value: 'register_date' },
         { text: 'ステータス', value: 'status' },
         { text: '操作', value: 'action' }
       ],
-      orders: []
+      orders: [],
+      showedItem: {
+        id: '',
+        register_date: '',
+        status: ''
+      }
     }
   },
   layout: 'contacts',
@@ -240,27 +292,27 @@ export default {
             },
             {
               id: 2,
-              register_date: '2018/12/30',
-              status: '処理中'
+              register_date: '2018/12/31',
+              status: '完了'
             },
             {
               id: 3,
-              register_date: '2018/12/30',
-              status: '処理中'
+              register_date: '2019/01/10',
+              status: 'キャンセル'
             },
             {
               id: 4,
-              register_date: '2018/12/30',
+              register_date: '2019/01/11',
               status: '処理中'
             },
             {
               id: 5,
-              register_date: '2018/12/30',
-              status: '処理中'
+              register_date: '2019/01/12',
+              status: 'キャンセル'
             },
             {
               id: 6,
-              register_date: '2018/12/30',
+              register_date: '2019/01/13',
               status: '処理中'
             }
           ]
@@ -269,7 +321,8 @@ export default {
       }, 2000)
     },
     showItem(id) {
-      alert(`show : ${id}`)
+      this.showedItem = this.orders.filter(item => item.id === id)[0]
+      this.showDialog = true
     },
     editItem(id) {
       alert(`edit : ${id}`)
