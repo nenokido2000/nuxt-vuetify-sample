@@ -42,6 +42,7 @@
     </v-form>
     <v-btn
       slot="activator"
+      :loading="loading"
       color="blue lighten-2"
       dark
       @click="search"
@@ -216,40 +217,44 @@ export default {
     search() {
       this.loading = true
       setTimeout(() => {
-        this.orders = [
-          {
-            id: 1,
-            register_date: '2018/12/30',
-            status: '処理中'
-          },
-          {
-            id: 2,
-            register_date: '2018/12/30',
-            status: '処理中'
-          },
-          {
-            id: 3,
-            register_date: '2018/12/30',
-            status: '処理中'
-          },
-          {
-            id: 4,
-            register_date: '2018/12/30',
-            status: '処理中'
-          },
-          {
-            id: 5,
-            register_date: '2018/12/30',
-            status: '処理中'
-          },
-          {
-            id: 6,
-            register_date: '2018/12/30',
-            status: '処理中'
-          }
-        ]
+        if (this.id === '10') {
+          this.orders = []
+        } else {
+          this.orders = [
+            {
+              id: 1,
+              register_date: '2018/12/30',
+              status: '処理中'
+            },
+            {
+              id: 2,
+              register_date: '2018/12/30',
+              status: '処理中'
+            },
+            {
+              id: 3,
+              register_date: '2018/12/30',
+              status: '処理中'
+            },
+            {
+              id: 4,
+              register_date: '2018/12/30',
+              status: '処理中'
+            },
+            {
+              id: 5,
+              register_date: '2018/12/30',
+              status: '処理中'
+            },
+            {
+              id: 6,
+              register_date: '2018/12/30',
+              status: '処理中'
+            }
+          ]
+        }
         this.loading = false
-      }, 3000)
+      }, 2000)
     },
     showItem(id) {
       alert(`show : ${id}`)
