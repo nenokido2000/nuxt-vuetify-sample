@@ -86,9 +86,21 @@
           <span class="hidden-sm-and-down">Nuxt-Vuetify Sample</span>
         </v-toolbar-title>
         <v-spacer/>
-        <v-btn icon>
-          <v-icon>account_box</v-icon>
-        </v-btn>
+        <v-menu
+          offset-y
+        >
+          <v-btn
+            slot="activator"
+            icon
+          >
+            <v-icon>account_box</v-icon>
+          </v-btn>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-sub-title><b>nenokido2000</b>でログインしています</v-list-tile-sub-title>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
         <v-btn icon>
           <v-icon>notifications</v-icon>
         </v-btn>
