@@ -61,42 +61,58 @@
         <td class="text-xs-left">{{ props.item.register_date }}</td>
         <td class="text-xs-left">{{ props.item.status }}</td>
         <td class="text-xs-left">
-          <v-icon
-            small
-            class="mr-2"
-            @click="showItem(props.item.id)"
-          >
-            more_horiz
-          </v-icon>
-          <v-icon
-            small
-            class="mr-2"
-            color="green darken-2"
-            @click="editItem(props.item.id)"
-          >
-            edit
-          </v-icon>
-          <v-icon
-            small
-            color="red darken-2"
-            @click="deleteItem(props.item.id)"
-          >
-            delete
-          </v-icon>
+          <v-tooltip bottom>
+            <v-icon
+              slot="activator"
+              small
+              class="mr-2"
+              @click="showItem(props.item.id)"
+            >
+              more_horiz
+            </v-icon>
+            <span>詳細を見る</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <v-icon
+              slot="activator"
+              small
+              class="mr-2"
+              color="green darken-2"
+              @click="editItem(props.item.id)"
+            >
+              edit
+            </v-icon>
+            <span>編集する</span>
+          </v-tooltip>
+          <v-tooltip bottom>
+            <v-icon
+              slot="activator"
+              small
+              color="red darken-2"
+              @click="deleteItem(props.item.id)"
+            >
+              delete
+            </v-icon>
+            <span>廃止する</span>
+          </v-tooltip>
         </td>
       </template>
     </v-data-table>
-    <v-btn
-      fab
-      bottom
-      right
-      color="pink"
-      dark
-      fixed
-      @click.stop="dialog = !dialog"
-    >
-      <v-icon>add</v-icon>
-    </v-btn>
+    <v-tooltip bottom>
+      <v-btn
+        slot="activator"
+        fab
+        bottom
+        right
+        color="pink"
+        dark
+        fixed
+        @click.stop="dialog = !dialog"
+      >
+        <v-icon>add</v-icon>
+      </v-btn>
+      <span>登録する</span>
+    </v-tooltip>
     <v-dialog
       v-model="dialog"
       width="800px">
