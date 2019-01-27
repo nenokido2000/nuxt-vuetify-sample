@@ -106,7 +106,7 @@
             >
               delete
             </v-icon>
-            <span>廃止する</span>
+            <span>削除する</span>
           </v-tooltip>
         </td>
       </template>
