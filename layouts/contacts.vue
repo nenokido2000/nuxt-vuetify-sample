@@ -97,7 +97,7 @@
           </v-btn>
           <v-list>
             <v-list-tile>
-              <v-list-tile-sub-title><b>nenokido2000</b>でログインしています</v-list-tile-sub-title>
+              <v-list-tile-sub-title><em>nenokido2000</em> でログインしています</v-list-tile-sub-title>
             </v-list-tile>
           </v-list>
         </v-menu>
