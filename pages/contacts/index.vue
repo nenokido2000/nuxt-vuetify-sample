@@ -99,7 +99,7 @@
         </td>
       </template>
     </v-data-table>
-    <v-tooltip bottom>
+    <v-tooltip left>
       <v-btn
         slot="activator"
         fab
@@ -207,7 +207,7 @@ export default {
         { text: 'ID', value: 'id' },
         { text: '登録日時', value: 'register_date' },
         { text: 'ステータス', value: 'status' },
-        { text: 'アクション', value: 'action' }
+        { text: '操作', value: 'action' }
       ],
       orders: []
     }
