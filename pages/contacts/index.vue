@@ -1,54 +1,66 @@
 <template>
   <div>
-    <v-form>
-      <v-container>
-        <v-layout>
-          <v-flex
-            xs12
-            md4
-          >
-            <v-text-field
-              v-model="id"
-              :counter="5"
-              label="ID"
-              maxlength="5"
-            />
-          </v-flex>
+    <v-flex>
 
-          <v-flex
-            xs12
-            md4
+      <v-toolbar
+        color="accent"
+        height="45"
+        dark
+      >
+        <v-toolbar-title>
+          <v-icon>search</v-icon>
+          <span class="hidden-sm-and-down">検索条件</span>
+          <v-spacer/>
+        </v-toolbar-title>
+      </v-toolbar>
+      <v-card>
+        <v-form>
+          <v-container>
+            <v-layout
+              row
+              wrap
+            >
+              <v-flex xs4>
+                <v-text-field
+                  v-model="id"
+                  :counter="5"
+                  label="ID"
+                  maxlength="5"
+                />
+              </v-flex>
+              <v-flex xs4>
+                <v-text-field
+                  v-model="register_date"
+                  :counter="10"
+                  label="登録日時"
+                  maxlength="10"
+                />
+              </v-flex>
+              <v-flex xs4>
+                <v-text-field
+                  v-model="status"
+                  :counter="10"
+                  label="ステータス"
+                />
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-form>
+        <v-layout justify-center>
+          <v-btn
+            slot="activator"
+            :loading="loading"
+            color="blue lighten-2"
+            dark
+            @click="search"
           >
-            <v-text-field
-              v-model="register_date"
-              :counter="10"
-              label="登録日時"
-              maxlength="10"
-            />
-          </v-flex>
-
-          <v-flex
-            xs12
-            md4
-          >
-            <v-text-field
-              v-model="status"
-              :counter="10"
-              label="ステータス"
-            />
-          </v-flex>
+            検索
+          </v-btn>
         </v-layout>
-      </v-container>
-    </v-form>
-    <v-btn
-      slot="activator"
-      :loading="loading"
-      color="blue lighten-2"
-      dark
-      @click="search"
-    >
-      検索
-    </v-btn>
+      </v-card>
+
+    </v-flex>
+    <br>
     <v-data-table
       :loading="loading"
       :headers="headers"
